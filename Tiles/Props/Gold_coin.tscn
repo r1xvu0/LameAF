@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/Props/Items/Coin/CoinMoving3.png" type="Texture" id=1]
+[ext_resource path="res://src/Props/Items/Coin/CoinMoving4.png" type="Texture" id=2]
+[ext_resource path="res://src/Props/Items/Coin/CoinMoving5.png" type="Texture" id=3]
+[ext_resource path="res://src/Props/Items/Coin/CoinMoving6.png" type="Texture" id=4]
+[ext_resource path="res://src/Props/Items/Coin/CoinMoving1.png" type="Texture" id=5]
+[ext_resource path="res://src/Props/Items/Coin/CoinMoving2.png" type="Texture" id=6]
+[ext_resource path="res://Tiles/Props/Gold_coin.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 20.7158
+
+[node name="Gold_coin" type="Area2D"]
+script = ExtResource( 7 )
+
+[node name="coin_shine" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 0.94902, 0.419608, 1 )
+show_behind_parent = true
+amount = 16
+preprocess = 5.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2( 0, -50 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 5
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.666218, 0.640479 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_Gold_coin_body_entered"]

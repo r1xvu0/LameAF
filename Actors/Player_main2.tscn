@@ -1,0 +1,183 @@
+[gd_scene load_steps=55 format=2]
+
+[ext_resource path="res://src/Player/adventurer-idle-2-01.png" type="Texture" id=1]
+[ext_resource path="res://src/Player/adventurer-idle-2-03.png" type="Texture" id=2]
+[ext_resource path="res://src/Player/adventurer-idle-2-00.png" type="Texture" id=3]
+[ext_resource path="res://src/Player/adventurer-idle-2-02.png" type="Texture" id=4]
+[ext_resource path="res://Actors/Controls_v03_current.gd" type="Script" id=5]
+[ext_resource path="res://src/Player/adventurer-run-00.png" type="Texture" id=6]
+[ext_resource path="res://src/Player/adventurer-run-02.png" type="Texture" id=7]
+[ext_resource path="res://src/Player/adventurer-run-01.png" type="Texture" id=8]
+[ext_resource path="res://src/Player/adventurer-run-05.png" type="Texture" id=9]
+[ext_resource path="res://src/Player/adventurer-run-04.png" type="Texture" id=10]
+[ext_resource path="res://src/Player/adventurer-run-03.png" type="Texture" id=11]
+[ext_resource path="res://src/Player/adventurer-jump-00.png" type="Texture" id=12]
+[ext_resource path="res://src/Player/adventurer-jump-01.png" type="Texture" id=13]
+[ext_resource path="res://src/Player/adventurer-jump-02.png" type="Texture" id=14]
+[ext_resource path="res://src/Player/adventurer-jump-03.png" type="Texture" id=15]
+[ext_resource path="res://src/Player/adventurer-fall-00.png" type="Texture" id=16]
+[ext_resource path="res://src/Player/adventurer-fall-01.png" type="Texture" id=17]
+[ext_resource path="res://src/Player/adventurer-wall-slide-01.png" type="Texture" id=18]
+[ext_resource path="res://src/Player/adventurer-wall-slide-00.png" type="Texture" id=19]
+[ext_resource path="res://Particles_FX/Player_Aura.tscn" type="PackedScene" id=20]
+[ext_resource path="res://src/Player/adventurer-attack1-02.png" type="Texture" id=21]
+[ext_resource path="res://src/Player/adventurer-attack1-04.png" type="Texture" id=22]
+[ext_resource path="res://src/Player/adventurer-attack1-03.png" type="Texture" id=23]
+[ext_resource path="res://src/Player/adventurer-attack1-00.png" type="Texture" id=24]
+[ext_resource path="res://src/Player/adventurer-attack1-01.png" type="Texture" id=25]
+[ext_resource path="res://src/Player/adventurer-attack2-01.png" type="Texture" id=26]
+[ext_resource path="res://src/Player/adventurer-attack2-05.png" type="Texture" id=27]
+[ext_resource path="res://src/Player/adventurer-attack2-03.png" type="Texture" id=28]
+[ext_resource path="res://src/Player/adventurer-attack2-00.png" type="Texture" id=29]
+[ext_resource path="res://src/Player/adventurer-attack2-02.png" type="Texture" id=30]
+[ext_resource path="res://src/Player/adventurer-attack2-04.png" type="Texture" id=31]
+[ext_resource path="res://src/Player/adventurer-attack3-01.png" type="Texture" id=32]
+[ext_resource path="res://src/Player/adventurer-attack3-00.png" type="Texture" id=33]
+[ext_resource path="res://src/Player/adventurer-attack3-03.png" type="Texture" id=34]
+[ext_resource path="res://src/Player/adventurer-attack3-02.png" type="Texture" id=35]
+[ext_resource path="res://src/Player/adventurer-attack3-05.png" type="Texture" id=36]
+[ext_resource path="res://src/Player/adventurer-attack3-04.png" type="Texture" id=37]
+[ext_resource path="res://Scripts/Stats.gd" type="Script" id=38]
+[ext_resource path="res://src/Player/adventurer-die-00.png" type="Texture" id=39]
+[ext_resource path="res://src/Player/adventurer-die-06.png" type="Texture" id=40]
+[ext_resource path="res://src/Player/adventurer-die-02.png" type="Texture" id=41]
+[ext_resource path="res://src/Player/adventurer-die-05.png" type="Texture" id=42]
+[ext_resource path="res://src/Player/adventurer-die-04.png" type="Texture" id=43]
+[ext_resource path="res://src/Player/adventurer-die-01.png" type="Texture" id=44]
+[ext_resource path="res://src/Player/adventurer-die-03.png" type="Texture" id=45]
+[ext_resource path="res://src/Player/adventurer-cast-00.png" type="Texture" id=46]
+[ext_resource path="res://src/Player/adventurer-cast-02.png" type="Texture" id=47]
+[ext_resource path="res://src/Player/adventurer-cast-03.png" type="Texture" id=48]
+[ext_resource path="res://src/Player/adventurer-cast-01.png" type="Texture" id=49]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 32 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "attack03",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "jump",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "hold_wall",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 44 ), ExtResource( 41 ), ExtResource( 45 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 40 ) ],
+"loop": false,
+"name": "die",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 46 ), ExtResource( 49 ), ExtResource( 47 ), ExtResource( 48 ) ],
+"loop": false,
+"name": "cast",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "fall",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "attack01",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 26 ), ExtResource( 30 ), ExtResource( 28 ), ExtResource( 31 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "attack02",
+"speed": 16.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
+} ]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.252874, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.494253, 0.492045 ), 0.0, 0.0, 0, 0, Vector2( 0.764368, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.549669, 0.715232 )
+colors = PoolColorArray( 0, 0.768555, 1, 1, 1, 1, 1, 1, 0.880795, 0.972411, 1, 1 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 3.2591
+height = 18.2849
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4.86095, 13.576 )
+
+[node name="Player_main" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="tp_circle" type="CPUParticles2D" parent="AnimatedSprite"]
+position = Vector2( -0.161766, 4.04417 )
+emitting = false
+amount = 750
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 14.76
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 70.0
+angle = 180.0
+angle_random = 1.0
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="Player_Aura" parent="AnimatedSprite" instance=ExtResource( 20 )]
+fract_delta = false
+scale_amount = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.270554, 6.26159 )
+shape = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.75, 0.75 )
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 2.5
+drag_margin_left = 1.0
+drag_margin_top = 0.1
+drag_margin_right = 1.0
+drag_margin_bottom = 0.45
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Player_Area2D" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Area2D"]
+position = Vector2( -0.179245, 5.19805 )
+shape = SubResource( 5 )
+
+[node name="Stats" type="Node2D" parent="."]
+script = ExtResource( 38 )
+
+[node name="Damage_Raycast" type="RayCast2D" parent="."]
+position = Vector2( -3.66258, -0.122086 )
+scale = Vector2( 1, 15 )
+enabled = true
+cast_to = Vector2( 28, 0 )
+collision_mask = 31
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

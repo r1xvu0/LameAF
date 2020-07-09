@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="AtlasTexture" id=1]
+region = Rect2( 0, 0, 512, 300 )
+
+[node name="BG01" type="Sprite"]
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 2560, 300 )

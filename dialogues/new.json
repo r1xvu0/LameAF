@@ -1,0 +1,27 @@
+{
+  "first": {
+    "type": "text",
+    "name": "Edgard",
+    "position": "left",
+    "content": "| Aldon, | is that really you, my friend?",
+    "next": "0"
+  },
+  "0": {
+    "type": "text",
+    "name": "Aldon",
+    "position": "right",
+    "content": "Prince Edgard! || Thank god you are still alive! |@This world has been outrun by monsters",
+    "next": "1"
+  },
+  "1": {
+    "type": "text",
+    "name": "Edgard",
+    "position": "left",
+    "content": "How did it happened? | I've been away for such a short time!",
+    "next": "2"
+  },
+  "repeat": {
+    "type": "text",
+    "content": "Hey. You are still there?",
+  }
+}

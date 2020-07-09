@@ -1,0 +1,177 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/Fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/Sprites/HP_Bar/hpBar_empty.png" type="Texture" id=2]
+[ext_resource path="res://HP_Bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Sprites/HP_Bar/armorBar_filler.png" type="Texture" id=4]
+[ext_resource path="res://UI/GUI.gd" type="Script" id=5]
+[ext_resource path="res://Environment/Items/Gold_coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Fonts/ThaleahFat.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Dialogue.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 7 )
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 5 )
+
+[node name="Dialogue" parent="." instance=ExtResource( 8 )]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 656.394
+margin_top = -97.8335
+margin_right = 656.394
+margin_bottom = -97.8335
+
+[node name="BG" type="Sprite" parent="."]
+
+[node name="Quest Log" type="RichTextLabel" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -160.0
+margin_right = -26.0
+margin_bottom = -111.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Quest Log
+   WIP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Armor_Label" type="RichTextLabel" parent="."]
+margin_left = 100.0
+margin_top = 37.0
+margin_right = 322.0
+margin_bottom = 64.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "Armor:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="RichTextLabel" parent="Armor_Label"]
+modulate = Color( 0.898039, 0.898039, 0.898039, 1 )
+margin_left = 58.0
+margin_right = 138.0
+margin_bottom = 22.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "500"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP_Label" type="RichTextLabel" parent="."]
+margin_left = 25.0
+margin_top = 37.0
+margin_right = 107.0
+margin_bottom = 57.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "HP:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="RichTextLabel" parent="HP_Label"]
+modulate = Color( 1, 0.372549, 0.372549, 1 )
+margin_left = 28.0
+margin_right = 97.0
+margin_bottom = 17.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "500"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LVL_Label" type="RichTextLabel" parent="."]
+margin_left = 375.0
+margin_top = 37.0
+margin_right = 456.0
+margin_bottom = 57.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "LVL:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="RichTextLabel" parent="LVL_Label"]
+modulate = Color( 0.831373, 0.803922, 0.32549, 1 )
+margin_left = 39.0
+margin_right = 112.698
+margin_bottom = 21.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP_Bar" parent="." instance=ExtResource( 3 )]
+
+[node name="Armor_Bar" type="TextureProgress" parent="."]
+margin_left = 25.0
+margin_top = 14.0
+margin_right = 299.0
+margin_bottom = 111.0
+rect_scale = Vector2( 1.5, 0.5 )
+value = 20.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exp_Bar" type="TextureProgress" parent="."]
+modulate = Color( 0.992157, 1, 0, 1 )
+margin_left = 25.0
+margin_top = 37.0
+margin_right = 299.0
+margin_bottom = 134.0
+rect_scale = Vector2( 1.5, 0.1 )
+max_value = 1000.0
+value = 980.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 1, 0.937255, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gold_coin" parent="." instance=ExtResource( 6 )]
+show_behind_parent = true
+position = Vector2( 32.6933, 64.3688 )
+
+[node name="coin_shine" parent="Gold_coin" index="0"]
+show_behind_parent = false
+
+[node name="CollisionShape2D" parent="Gold_coin" index="2"]
+visible = false
+
+[node name="Gold_Label" type="RichTextLabel" parent="."]
+margin_left = 45.4
+margin_top = 54.0
+margin_right = 127.848
+margin_bottom = 75.0
+custom_fonts/normal_font = SubResource( 2 )
+text = ":"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Counter" type="RichTextLabel" parent="Gold_Label"]
+margin_left = 6.0
+margin_right = 84.552
+margin_bottom = 20.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="Gold_coin"]

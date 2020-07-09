@@ -1,0 +1,146 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0010.png" type="Texture" id=1]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0012.png" type="Texture" id=2]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0008.png" type="Texture" id=3]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0014.png" type="Texture" id=4]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0004.png" type="Texture" id=5]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0011.png" type="Texture" id=6]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0005.png" type="Texture" id=7]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0013.png" type="Texture" id=8]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0009.png" type="Texture" id=9]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0006.png" type="Texture" id=10]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0003.png" type="Texture" id=11]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0007.png" type="Texture" id=12]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0015.png" type="Texture" id=13]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0000.png" type="Texture" id=14]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0001.png" type="Texture" id=15]
+[ext_resource path="res://src/Sprites/Enemies/Flame_Skull/frame0002.png" type="Texture" id=16]
+[ext_resource path="res://Actors/Enemies/Flaming_Skull.gd" type="Script" id=17]
+[ext_resource path="res://Actors/Enemies/get_hit_particle.gd" type="Script" id=18]
+[ext_resource path="res://src/Sprites/HP_Bar/hpBar_filler.png" type="Texture" id=19]
+[ext_resource path="res://src/Sprites/HP_Bar/hpBar_empty.png" type="Texture" id=20]
+[ext_resource path="res://src/Fonts/ThaleahFat.ttf" type="DynamicFontData" id=21]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 3 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 10.4504
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 6.905
+height = 19.0998
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 99.5113
+
+[sub_resource type="DynamicFont" id=5]
+size = 10
+font_data = ExtResource( 21 )
+
+[node name="Flaming_Skull" type="KinematicBody2D" groups=[
+"Enemies",
+]]
+collision_mask = 2
+script = ExtResource( 17 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 9
+playing = true
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 10.4193 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 8, 0 )
+enabled = true
+cast_to = Vector2( 0, 28 )
+collision_mask = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+input_pickable = false
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2( 0, 7.1673 )
+shape = SubResource( 3 )
+
+[node name="get_hit_particle" type="CPUParticles2D" parent="."]
+visible = false
+modulate = Color( 1, 0.219608, 0.219608, 1 )
+emitting = false
+amount = 40
+one_shot = true
+speed_scale = 2.5
+explosiveness = 1.0
+lifetime_randomness = 1.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2( 0, -10 )
+spread = 90.0
+gravity = Vector2( 0, -96 )
+initial_velocity = 20.0
+scale_amount = 2.0
+script = ExtResource( 18 )
+
+[node name="get_hit_particle2" type="CPUParticles2D" parent="."]
+visible = false
+modulate = Color( 1, 0.219608, 0.219608, 1 )
+emitting = false
+amount = 40
+speed_scale = 2.5
+explosiveness = 1.0
+lifetime_randomness = 1.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2( 0, -10 )
+spread = 90.0
+gravity = Vector2( 0, -96 )
+initial_velocity = 20.0
+scale_amount = 2.0
+script = ExtResource( 18 )
+
+[node name="Player_detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_detector"]
+visible = false
+shape = SubResource( 4 )
+
+[node name="hp_bar" type="TextureProgress" parent="."]
+margin_left = -20.0
+margin_top = -16.5411
+margin_right = 254.0
+margin_bottom = 26.4589
+rect_scale = Vector2( 0.15, 0.1 )
+value = 10.0
+texture_under = ExtResource( 20 )
+texture_progress = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lvl_label" type="RichTextLabel" parent="."]
+margin_left = -12.0
+margin_top = -30.0
+margin_right = 28.0
+margin_bottom = -16.0
+custom_fonts/normal_font = SubResource( 5 )
+text = "lvl: 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Player_detector" to="." method="_on_Player_detector_body_entered"]
+[connection signal="body_exited" from="Player_detector" to="." method="_on_Player_detector_body_exited"]
